@@ -9,54 +9,33 @@ pengguna{
     float saldo
 }
 
-transaksi{
-    string jenis_transaksi
-    string tanggal_transaksi
-    string status
-}
 
-topup{
-    float jumlah
-    string tanggal_topup
-    string metode_pembayaran
-}
-
-withdraw{
-    float jumlah
-    string tanggal_withdraw
-    string rekening_tujuan
-}
-
-merchant{
+merchant {
     string nama_merchant
     string kategori
 }
 
-pembayaran{
+transaksi {
+    string jenis_transaksi    
     float jumlah
-    string tanggal_pembayaran
-    string status
+    string tanggal_transaksi
+    string status              
+    string keterangan
+    string email_pengirim      
+    string email_penerima      
+    string nama_merchant      
 }
 
-transfer{
-    float jumlah
-    string catatan
-}
-
-history{
+history {
     string jenis_history
     float jumlah
     string keterangan
     string tanggal_history
+    string email_pengguna
 }
 
 pengguna ||--o{ transaksi : "melakukan"
-pengguna ||--o{ topup : "melakukan" 
-pengguna ||--o{ withdraw : "melakukan"
-pengguna ||--o{ pembayaran : "melakukan"
-merchant ||--o{ pembayaran : "menerima"
 pengguna ||--o{ history : "memiliki"
-pengguna ||--o{ transfer : "mengirim"
-pengguna ||--o{ transfer : "menerima"
+merchant ||--o{ transaksi : "menerima pembayaran"
 
 ```
